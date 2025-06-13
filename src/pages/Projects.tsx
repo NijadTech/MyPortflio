@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { motion } from 'framer-motion';
-import { Typography, Box, Grid, Paper, Button } from '@mui/material';
+import { Typography, Box, Grid, Button, Link } from '@mui/material';
 
 const ProjectsSection = styled('section')({
   minHeight: '100vh',
@@ -113,51 +113,58 @@ const Projects: React.FC = () => {
     {
       title: 'Order Website',
       description: 'A full-featured e-commerce platform with user authentication, product management, and payment integration.',
-      image: '/images/cayweb.jpg',
+      image: '/MyPortflio/images/cayweb.jpg',
       tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      link: 'https://github.com/NijadTech/CayWeb',
+      githubLink: 'https://github.com/NijadTech/CayWeb',
+      liveLink: 'https://cayweb.vercel.app/',
     },
     {
       title: '3D Electronics Website',
       description: 'An interactive website showcasing electronic products with 3D models and real-time customization.',
-      image: '/images/project2.jpg',
+      image: '/MyPortflio/images/3D.jpg',
       tags: ['Three.js', 'React', 'WebGL'],
-      link: '#',
+      githubLink: 'https://github.com/NijadTech/3D-Website',
+      liveLink: 'https://nijadtech.github.io/MyPortflio/#/projects',
     },
     {
       title: 'Portfolio Website',
       description: 'A personal portfolio website showcasing my projects and skills.',
-      image: '/images/portflio.jpg',
+      image: '/MyPortflio/images/portflio.jpg',
       tags: ['React', 'Material-UI', 'Framer Motion'],
-      link: 'https://nijadtech.github.io/Phd.Portflio/',
+      githubLink: 'https://github.com/NijadTech/Phd.Portflio',
+      liveLink: 'https://nijadtech.github.io/Phd.Portflio/',
     },
     {
       title: 'Odd Website',
       description: 'A website for the Haut-Commissariat au Plan (HCP) in Dakhla, showcasing statistics and information.',
-      image: '/images/hcp.jpg',
+      image: '/MyPortflio/images/hcp.jpg',
       tags: ['PHP', 'HTML', 'CSS', 'JavaScript'],
-      link: 'https://github.com/NijadTech/OddWebsite',
+      githubLink: 'https://github.com/NijadTech/OddWebsite',
+      liveLink: '#',
     },
     {
       title: 'Music Player App',
       description: 'A mobile application for playing music with a user-friendly interface.',
-      image: '/images/music.jpg',
+      image: '/MyPortflio/images/music.jpg',
       tags: ['Kotlin', 'Android', 'Firebase'],
-      link: 'https://github.com/NijadTech/Music-Player-App',
+      githubLink: 'https://github.com/NijadTech/Music-Player-App',
+      liveLink: '#',
     },
     {
       title: 'AI Brain Tumor Detection',
       description: 'A project focused on detecting brain tumors using AI and machine learning techniques.',
-      image: '/images/BrainTumor.jpg',
+      image: '/MyPortflio/images/BrainTumor.jpg',
       tags: ['AI', 'Machine Learning', 'Medical Imaging'],
-      link: '/images/Project.pdf',
+      githubLink: '/MyPortflio/images/Project.pdf',
+      liveLink: '#',
     },
     {
       title: 'Pancreatic Cancer Detection',
       description: 'A project focused on detecting pancreatic cancer using AI and machine learning techniques.',
-      image: '/images/Pancreatic.png',
+      image: '/MyPortflio/images/Pancreatic.png',
       tags: ['AI', 'Machine Learning', 'Medical Imaging'],
-      link: '/images/Article.pdf',
+      githubLink: '/MyPortflio/images/Article.pdf',
+      liveLink: '#',
     },
   ];
 
@@ -189,18 +196,36 @@ const Projects: React.FC = () => {
                         <span key={tagIndex}>{tag}</span>
                       ))}
                     </ProjectTags>
-                    <StyledButton
-                      variant="contained"
-                      href={project.link}
-                      sx={{
-                        backgroundColor: '#FF6B6B',
-                        '&:hover': {
-                          backgroundColor: '#FF5252',
-                        },
-                      }}
-                    >
-                      View Project
-                    </StyledButton>
+                    <Box sx={{ display: 'flex', gap: 2 }}>
+                      <Link href={project.githubLink} target="_blank" rel="noopener noreferrer" underline="none">
+                        <StyledButton
+                          variant="contained"
+                          sx={{
+                            backgroundColor: '#333',
+                            '&:hover': {
+                              backgroundColor: '#444',
+                            },
+                          }}
+                        >
+                          GitHub
+                        </StyledButton>
+                      </Link>
+                      {project.liveLink !== '#' && (
+                        <Link href={project.liveLink} target="_blank" rel="noopener noreferrer" underline="none">
+                          <StyledButton
+                            variant="contained"
+                            sx={{
+                              backgroundColor: '#FF6B6B',
+                              '&:hover': {
+                                backgroundColor: '#FF5252',
+                              },
+                            }}
+                          >
+                            Live Demo
+                          </StyledButton>
+                        </Link>
+                      )}
+                    </Box>
                   </ProjectContent>
                 </ProjectCard>
               </Grid>
